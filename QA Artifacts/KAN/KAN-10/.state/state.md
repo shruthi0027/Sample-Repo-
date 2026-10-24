@@ -2,20 +2,21 @@
 
 ## Current
 
-- **Phase**: context-gathering
-- **Status**: failed
+- **Phase**: requirement-grooming
+- **Status**: in-progress
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T11:07:30Z
+- **Last Updated**: 2026-10-24T11:41:00Z
 
 ## Completed
 
 | # | Phase | Timestamp | Artifacts Produced |
 |---|-------|-----------|--------------------|
+| 1 | context-gathering | 2026-10-24T11:40:00Z | context/context-KAN-10.md, context-KAN-10-core.md, context-KAN-10-linked.md, context/attachments/ (empty), context/figma/ (empty) |
+| 2 | figma-analysis | 2026-10-24T11:41:00Z | skipped — no Figma URLs in context Section 6 |
 
 ## Pending
 
-- Restore Jira API access and confirm KAN-10 exists
-- Re-run: start QA grooming (context-gathering → figma → grooming → knowledge-capture)
+- requirement-grooming → Q&A tracker + ALM comment → knowledge-capture → awaiting-human
 
 ## History
 
@@ -30,6 +31,9 @@
 - 2026-10-24T11:07:00Z -- Follow-up received: human response is "start QA grooming" (no Q-IDs / no GROOMING_COMPLETE). No qa-tracker exists; context/ empty. Resume Flow N/A — treat as restart of Phase 1.
 - 2026-10-24T11:07:15Z -- Retry jira_get_issue(KAN-10) + REST /myself: still 401 AUTHENTICATED_FAILED / issue not found. Search returns empty.
 - 2026-10-24T11:07:30Z -- Still blocked; Status remains failed. No Jira comment (cannot access issue; no new workflow output vs prior failure).
+- 2026-10-24T11:36:49Z -- Human reply "Start QA grooming"; Jira access restored; restarting requirement-grooming from Step 1 (context-gathering). Git Branch: main. No qa-tracker; treat as fresh start (Resume Flow N/A).
+- 2026-10-24T11:40:00Z -- context-gathering completed (mode: functional-test-design). Parent Issue = KAN-10 (not a sub-task). Linked KAN-8 fetched (Blocks). No Figma. No attachments. ACs none on KAN-10; 7 ACs verbatim from KAN-8. Knowledge: hid-developer-portal. docs/ and specs/ absent on main.
+- 2026-10-24T11:41:00Z -- figma-analysis skipped (no Figma URLs). Phase → requirement-grooming. Committing context-gathering checkpoint.
 
 ## Quality Metrics
 
