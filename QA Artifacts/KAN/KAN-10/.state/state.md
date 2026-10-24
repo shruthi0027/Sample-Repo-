@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: requirement-grooming
-- **Status**: in-progress
+- **Phase**: awaiting-human
+- **Status**: awaiting-human
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T11:41:00Z
+- **Last Updated**: 2026-10-24T11:43:44Z
 
 ## Completed
 
@@ -13,10 +13,14 @@
 |---|-------|-----------|--------------------|
 | 1 | context-gathering | 2026-10-24T11:40:00Z | context/context-KAN-10.md, context-KAN-10-core.md, context-KAN-10-linked.md, context/attachments/ (empty), context/figma/ (empty) |
 | 2 | figma-analysis | 2026-10-24T11:41:00Z | skipped — no Figma URLs in context Section 6 |
+| 3 | requirement-grooming | 2026-10-24T11:42:30Z | context/context-KAN-10.md Section 10 (gaps, risks, testability, assumptions, open questions) |
+| 4 | qa-tracker-and-comment | 2026-10-24T11:42:51Z | .state/qa-tracker-KAN-10.md; Jira comment 10108 (Grooming Review Round 1) |
+| 5 | knowledge-capture | 2026-10-24T11:43:30Z | knowledge/KAN/features/hid-developer-portal/task.md |
 
 ## Pending
 
-- requirement-grooming → Q&A tracker + ALM comment → knowledge-capture → awaiting-human
+- Await human answers to must items Q-001, Q-002, Q-003 (and optional Q-004–Q-007 / assumptions)
+- On reply: Resume Flow Path A or Path B; when ready for test design, human comments GROOMING_COMPLETE
 
 ## History
 
@@ -34,13 +38,17 @@
 - 2026-10-24T11:36:49Z -- Human reply "Start QA grooming"; Jira access restored; restarting requirement-grooming from Step 1 (context-gathering). Git Branch: main. No qa-tracker; treat as fresh start (Resume Flow N/A).
 - 2026-10-24T11:40:00Z -- context-gathering completed (mode: functional-test-design). Parent Issue = KAN-10 (not a sub-task). Linked KAN-8 fetched (Blocks). No Figma. No attachments. ACs none on KAN-10; 7 ACs verbatim from KAN-8. Knowledge: hid-developer-portal. docs/ and specs/ absent on main.
 - 2026-10-24T11:41:00Z -- figma-analysis skipped (no Figma URLs). Phase → requirement-grooming. Committing context-gathering checkpoint.
+- 2026-10-24T11:42:30Z -- requirement-grooming completed: 10 gaps, 7 questions, 6 assumptions, 7 risks in context Section 10.
+- 2026-10-24T11:42:51Z -- Q&A tracker Round 1 written; Grooming Review comment posted on KAN-10 (comment id 10108).
+- 2026-10-24T11:43:30Z -- knowledge-capture completed → knowledge/KAN/features/hid-developer-portal/task.md
+- 2026-10-24T11:43:44Z -- Status → awaiting-human; stopping for human replies to Q-001–Q-003 (must).
 
 ## Quality Metrics
 
-- **AC Coverage**: —
+- **AC Coverage**: 0/7 formal ACs fully testable without clarification (must gaps on AC2–AC6)
 - **Test Cases Generated**: 0
 - **Scenarios per Element (avg)**: —
 - **Publish Success Rate**: —
-- **Coverage Gaps Found**: —
-- **Human Intervention Rounds**: 0
+- **Coverage Gaps Found**: 10 (G-001–G-010)
+- **Human Intervention Rounds**: 1 (Round 1 posted)
 - **Delta Updates**: 0
