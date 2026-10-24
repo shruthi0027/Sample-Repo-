@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: test-result-report
+- **Phase**: publish
 - **Status**: in-progress
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T12:34:46Z
+- **Last Updated**: 2026-10-24T12:36:00Z
 
 ## Completed
 
@@ -23,10 +23,11 @@
 | 10 | credential-analysis | 2026-10-24T12:30:00Z | credential-requirements-KAN-10.md (live+status); execution-credential-tracker-KAN-10.md |
 | 11 | execution-manifest | 2026-10-24T12:32:00Z | functional/execution/execution-manifest-KAN-10.md (11 Smoke TCs, all Pending) |
 | 12 | agent-browser-execution | 2026-10-24T12:34:46Z | functional/execution/execution-results-KAN-10.json (0 Pass / 0 Fail / 11 Blocked) |
+| 13 | test-result-report | 2026-10-24T12:36:00Z | functional/execution/test-result-KAN-10.md, test-result-KAN-10.html |
 
 ## Pending
 
-- web-test-execution: test-result-report → publish → status-comment
+- web-test-execution: publish → status-comment
 
 ## History
 
@@ -37,6 +38,7 @@
 - 2026-10-24T12:30:00Z -- credential-analysis: CR-001/002/003 PROVIDED; CR-004 OPTIONAL. No Jira credential request. Live Login URL unreachable (ERR_CONNECTION_REFUSED / private 10.8.x.x). Hard gate clear — may proceed to manifest.
 - 2026-10-24T12:32:00Z -- execution-manifest: Smoke scope (default); 11 TCs Pending; 0 Blocked. Phase → agent-browser-execution.
 - 2026-10-24T12:34:46Z -- agent-browser-execution: one open of QA Login URL failed with net::ERR_CONNECTION_REFUSED; all 11 Smoke TCs Blocked (host unreachable). Browser closed. Phase → test-result-report.
+- 2026-10-24T12:36:00Z -- test-result-report: wrote test-result-KAN-10.md + test-result-KAN-10.html (0 Pass / 0 Fail / 11 Blocked; Verdict Partial). Phase → publish.
 
 ## Quality Metrics
 

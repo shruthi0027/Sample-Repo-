@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Execution Results — KAN-10</title>
+<style>
+  :root {
+    --pass: #22c55e; --pass-bg: #f0fdf4;
+    --fail: #ef4444; --fail-bg: #fef2f2;
+    --blocked: #f59e0b; --blocked-bg: #fffbeb;
+    --border: #e5e7eb; --text: #111827; --muted: #6b7280;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); color: var(--text); background: #f9fafb; padding: 2rem; }
+  h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+  .meta-table, .summary-table, .results-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.875rem; }
+  .meta-table td, .summary-table td, .summary-table th,
+  .results-table td, .results-table th { padding: 0.5rem 0.75rem; border: 1px solid var(--border); }
+  .meta-table td:first-child, .summary-table th { font-weight: 600; background: #f3f4f6; }
+  .results-table th { background: #f3f4f6; font-weight: 600; text-align: left; }
+  .badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  .badge-pass { background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass); }
+  .badge-fail { background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail); }
+  .badge-blocked { background: var(--blocked-bg); color: var(--blocked); border: 1px solid var(--blocked); }
+  .verdict-pass { color: var(--pass); font-weight: 700; }
+  .verdict-fail { color: var(--fail); font-weight: 700; }
+  .verdict-partial { color: var(--blocked); font-weight: 700; }
+  details { margin: 0.5rem 0; border: 1px solid var(--border); border-radius: 0.375rem; overflow: hidden; }
+  summary { padding: 0.6rem 0.75rem; cursor: pointer; background: #f9fafb; font-weight: 500; font-size: 0.875rem; }
+  details[open] summary { border-bottom: 1px solid var(--border); }
+  .detail-body { padding: 0.75rem; font-size: 0.875rem; }
+  .detail-body table { width: 100%; border-collapse: collapse; }
+  .detail-body table td, .detail-body table th { padding: 0.4rem 0.6rem; border: 1px solid var(--border); font-size: 0.82rem; }
+  .detail-body table th { background: #f3f4f6; font-weight: 600; text-align: left; }
+  .screenshot-link { display: inline-block; margin-top: 0.4rem; color: #2563eb; font-size: 0.8rem; text-decoration: none; }
+  .screenshot-link:hover { text-decoration: underline; }
+  .footer { margin-top: 2rem; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 0.75rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+  .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem 1rem; text-align: center; }
+  .stat-card .num { font-size: 2rem; font-weight: 700; }
+  .stat-card .lbl { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+  .stat-card.pass .num { color: var(--pass); }
+  .stat-card.fail .num { color: var(--fail); }
+  .stat-card.blocked .num { color: var(--blocked); }
+  #filter { width: 100%; max-width: 420px; padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; font-size: 0.875rem; font-family: var(--font); }
+</style>
+</head>
+<body>
+
+<h1>Test Execution Results — KAN-10</h1>
+
+<table class="meta-table">
+  <tr><td>Item / Run</td><td>KAN-10 / KAN-10-exec-20261024T123415Z</td></tr>
+  <tr><td>Project</td><td>KAN</td></tr>
+  <tr><td>Run Date</td><td>2026-10-24</td></tr>
+  <tr><td>Executed At</td><td>2026-10-24T12:34:46Z</td></tr>
+  <tr><td>Started At</td><td>2026-10-24T12:34:15Z</td></tr>
+  <tr><td>Finished At</td><td>2026-10-24T12:34:46Z</td></tr>
+  <tr><td>Time Taken</td><td>31s (31000 ms)</td></tr>
+  <tr><td>Base URL(s)</td><td>https://webportal.qa.developercommunity.hidcloud.com/login</td></tr>
+  <tr><td>Scope</td><td>Smoke</td></tr>
+  <tr><td>Browser</td><td>agent-browser CLI (Chrome for Testing)</td></tr>
+  <tr><td>Executed By</td><td>QA Agent (agent-browser)</td></tr>
+</table>
+
+<h2>Executive Summary</h2>
+
+<div class="stat-grid">
+  <div class="stat-card pass"><div class="num">0</div><div class="lbl">✅ Passed</div></div>
+  <div class="stat-card fail"><div class="num">0</div><div class="lbl">❌ Failed</div></div>
+  <div class="stat-card blocked"><div class="num">11</div><div class="lbl">⏸️ Blocked</div></div>
+  <div class="stat-card"><div class="num">11</div><div class="lbl">Total</div></div>
+</div>
+
+<table class="summary-table">
+  <tr><th>Verdict</th><td class="verdict-partial">PARTIAL</td></tr>
+  <tr><th>Pass Rate</th><td>0% (0/11 test cases)</td></tr>
+  <tr><th>Total Time Taken</th><td>31s</td></tr>
+</table>
+
+<h2>Results Overview</h2>
+
+<input type="text" id="filter" placeholder="Filter by TC ID or title…" oninput="filterTable(this.value)">
+
+<table class="results-table" id="resultsTable">
+  <thead>
+    <tr><th>#</th><th>Test Case</th><th>Result</th><th>Run Date</th><th>Time Taken</th><th>Reason / Evidence</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TC-001</td>
+      <td>Verify Create Account page loads with usable primary registration controls after the Developer clicks `Create Account` on Login</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>31s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-003</td>
+      <td>Verify `Create Account` on Login opens Create Account when clicked once</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-006</td>
+      <td>Verify Product Access option is visible and selectable on Create Account</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-007</td>
+      <td>Verify Create Account is reachable from the QA Login URL by clicking `Create Account`</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-008</td>
+      <td>Verify the Developer completes Product Access registration from Create Account through `Submit Registration` and sees a success message or account creation confirmation</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-010</td>
+      <td>Verify selecting the Product Access option opens the required-details step</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-014</td>
+      <td>Verify filling all required Product Access details allows the Developer to continue to Review</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-020</td>
+      <td>Verify a success message or account creation confirmation screen appears after `Submit Registration`</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-034</td>
+      <td>Verify `Submit Registration` from Review with accurate displayed details reaches a success message or account creation confirmation</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-035</td>
+      <td>Verify Create Account access flow completes from QA Login URL through click of `Create Account` to a loaded Create Account page</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+    <tr>
+      <td>TC-036</td>
+      <td>Verify Product Access registration flow completes from Login through Product Access option, required details, Review, and `Submit Registration` to a success message or account creation confirmation</td>
+      <td><span class="badge badge-blocked">Blocked</span></td>
+      <td>2026-10-24 12:34 UTC</td>
+      <td>0s</td>
+      <td>QA Login host unreachable: net::ERR_CONNECTION_REFUSED (private 10.8.x.x)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Passes</h2>
+
+<p style="color:var(--muted);font-size:0.875rem">No test cases passed in this run.</p>
+
+<h2>Failures</h2>
+
+<p style="color:var(--muted);font-size:0.875rem">No test cases failed in this run.</p>
+
+<h2>Blocked</h2>
+
+<details open>
+  <summary>⏸️ TC-001 — Verify Create Account page loads with usable primary registration controls after the Developer clicks `Create Account` on Login <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">31s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>31s (31000 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-003 — Verify `Create Account` on Login opens Create Account when clicked once <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-006 — Verify Product Access option is visible and selectable on Create Account <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-007 — Verify Create Account is reachable from the QA Login URL by clicking `Create Account` <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-008 — Verify the Developer completes Product Access registration from Create Account through `Submit Registration` and sees a success message or account creation confirmation <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-010 — Verify selecting the Product Access option opens the required-details step <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-014 — Verify filling all required Product Access details allows the Developer to continue to Review <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-020 — Verify a success message or account creation confirmation screen appears after `Submit Registration` <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-034 — Verify `Submit Registration` from Review with accurate displayed details reaches a success message or account creation confirmation <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-035 — Verify Create Account access flow completes from QA Login URL through click of `Create Account` to a loaded Create Account page <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>⏸️ TC-036 — Verify Product Access registration flow completes from Login through Product Access option, required details, Review, and `Submit Registration` to a success message or account creation confirmation <span style="color:var(--muted);font-weight:400;font-size:0.8rem;margin-left:0.5rem">0s</span></summary>
+  <div class="detail-body">
+    <table>
+      <tr><th>Result</th><td><span class="badge badge-blocked">Blocked</span></td></tr>
+      <tr><th>Run Date</th><td>2026-10-24</td></tr>
+      <tr><th>Time Taken</th><td>0s (0 ms)</td></tr>
+      <tr><th>Reason</th><td>QA Login host unreachable from agent network: agent-browser open https://webportal.qa.developercommunity.hidcloud.com/login failed with net::ERR_CONNECTION_REFUSED (private 10.8.x.x). Cannot reach Login page to execute Create Account flow.</td></tr>
+    </table>
+  </div>
+</details>
+
+<h2>Artifacts</h2>
+
+<table class="results-table">
+  <thead><tr><th>Artifact</th><th>Path</th></tr></thead>
+  <tbody>
+    <tr><td>Execution results (JSON)</td><td>execution-results-KAN-10.json</td></tr>
+    <tr><td>Execution manifest</td><td>execution-manifest-KAN-10.md</td></tr>
+    <tr><td>Execution cache</td><td>../execution-cache.json</td></tr>
+    <tr><td>Failure screenshots</td><td>screenshots/</td></tr>
+    <tr><td>This report (MD)</td><td>test-result-KAN-10.md</td></tr>
+    <tr><td>This report (HTML)</td><td>test-result-KAN-10.html</td></tr>
+  </tbody>
+</table>
+
+<div class="footer">Generated by QA Agent (agent-browser) · 2026-10-24T12:34:46Z</div>
+
+<script>
+function filterTable(q) {
+  const rows = document.querySelectorAll('#resultsTable tbody tr');
+  const lower = q.toLowerCase();
+  rows.forEach(r => {
+    const text = r.textContent.toLowerCase();
+    r.style.display = text.includes(lower) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
