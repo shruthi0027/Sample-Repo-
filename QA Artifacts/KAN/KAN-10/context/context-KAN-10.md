@@ -169,10 +169,11 @@ Limited sources: no Figma analysis yet (Section 6 is URL-only / none), no `docs/
 | Screen Name | Navigation Path | Visible To |
 |-------------|-----------------|------------|
 | Login | Open https://webportal.qa.developercommunity.hidcloud.com/login | All (entry URL from KAN-10) |
-| Create Account | Path from Login unknown — confirm exact control labels in grooming | All (per AC1) |
-| Coupon registration steps | Unknown step sequence after Create Account | Users on coupon-based path (AC2, AC4, AC5) |
-| Product access workflow steps | Unknown steps/fields | Users on product access path (AC3) |
-| Review | Appears before final submission; shows entered registration details | Users who completed prior registration steps (AC6, AC7) |
+| Create Account | From Login, click `Create Account` (Q-004 resolved) | All (per AC1) |
+| Coupon registration steps | Out of scope for this testing activity (Q-001) | N/A for KAN-10 testing |
+| Product access workflow steps | Create Account → Select Product Access option → Enter required details → Review → Submit Registration (Q-002) | Users on product access path (AC3) |
+| Review | Before Submit Registration; shows all entered registration details (Q-003) | Users who completed prior registration steps (AC6, AC7) |
+| Success / confirmation | After Submit Registration: success message or account creation confirmation screen (Q-007) | Completing registrant |
 
 ### 8b. Key UI Elements
 
@@ -401,15 +402,43 @@ From Linked item (KAN-8) only. KAN-10 Description has no ACs.
 
 ### 10.13 Open Questions
 
-| # | Question | Priority | Source & Reason |
-|---|----------|----------|-----------------|
-| Q-001 | What valid coupon code(s) should QA use in the QA environment to prove AC2 and AC4? | must | **Linked item (KAN-8) AC2 / AC4**: “valid coupon code” / “Valid coupon codes are accepted” — no code in Description, attachments, or Project Knowledge (`testing.md` still lists this as open) |
-| Q-002 | What are the exact steps, fields, and success criteria for the product access workflow in AC3? | must | **Linked item (KAN-8) AC3** + **Description (KAN-8)**: “product access workflow” / “product-based access requests” — path not specified beyond the name |
-| Q-003 | What fields appear on the Review page (AC6), and what is the exact on-screen text for an invalid coupon (AC5)? | must | **Linked item (KAN-8) AC5 / AC6**: “appropriate validation error message” and “all entered registration details” are not concrete |
-| Q-004 | How does a developer go from the Login URL to the Create Account page (AC1)? What are the exact control labels? | should | **Linked item (KAN-8) AC1** + **Description (KAN-10)**: only `/login` is given — Create Account entry path unknown |
-| Q-005 | Is `shruthi00277@gmail.com` an existing portal login for testing, or an identity to use when registering? | should | **Description (KAN-10)**: credentials paired with Login URL while Story ACs are registration |
-| Q-006 | Is the “KAN-10 blocks KAN-8” link intentional as a testing gate, or should KAN-10 be a child/sub-task of KAN-8? | nice | **Linked item (KAN-8)**: Blocks relationship is unusual for a pure test assignment (same pattern noted historically for KAN-7/KAN-6) |
-| Q-007 | After Review submission, what visible success outcome proves “complete registration” for AC2 and AC3? | should | **Linked item (KAN-8) AC2 / AC3**: “complete registration” with no confirmation/post-submit definition |
+| # | Question | Priority | Status | Answer (2026-10-24 comment 10109) | Source & Reason |
+|---|----------|----------|--------|-----------------------------------|-----------------|
+| Q-001 | What valid coupon code(s) should QA use in the QA environment to prove AC2 and AC4? | must | RESOLVED | Coupon code registration is **out of scope** for this testing activity. Focus on Create Account and Product Access workflows only. | Linked item (KAN-8) AC2 / AC4 |
+| Q-002 | What are the exact steps, fields, and success criteria for the product access workflow in AC3? | must | RESOLVED | Create Account → Select Product Access option → Enter required details → Review → Submit Registration. | Linked item (KAN-8) AC3 |
+| Q-003 | What fields appear on the Review page (AC6), and what is the exact on-screen text for an invalid coupon (AC5)? | must | RESOLVED | Review displays all entered registration details. Invalid coupon validation **not tested** (coupon out of scope). | Linked item (KAN-8) AC5 / AC6 |
+| Q-004 | How does a developer go from the Login URL to the Create Account page (AC1)? What are the exact control labels? | should | RESOLVED | From the Login page, click **Create Account** to start registration. | Linked item (KAN-8) AC1 + Description (KAN-10) |
+| Q-005 | Is `shruthi00277@gmail.com` an existing portal login for testing, or an identity to use when registering? | should | RESOLVED | Can be used as a test account. If already registered, use a new email address. | Description (KAN-10) |
+| Q-006 | Is the “KAN-10 blocks KAN-8” link intentional as a testing gate, or should KAN-10 be a child/sub-task of KAN-8? | nice | RESOLVED | Relationship is intentional for testing purposes. | Linked item (KAN-8) |
+| Q-007 | After Review submission, what visible success outcome proves “complete registration” for AC2 and AC3? | should | RESOLVED | Success message or successful account creation confirmation screen. | Linked item (KAN-8) AC2 / AC3 |
+
+---
+
+### 10.15 Resolved Clarifications & Test Scope (human Round 1 answers)
+
+**In scope for this testing activity**
+- **AC1** — Create Account page loads and is accessible (entry: Login → click `Create Account`)
+- **AC3** — Product access registration: Create Account → Select Product Access option → Enter required details → Review → Submit Registration
+- **AC6** — Review shows all entered registration details before submission
+- **AC7** — Registration details retained and accurately displayed throughout the journey
+- Success for complete registration: success message **or** account creation confirmation screen
+
+**Out of scope for this testing activity**
+- Coupon code registration (**AC2**, **AC4**)
+- Invalid coupon validation (**AC5**)
+
+**Confirmed assumptions**
+- A-001 Confirmed (formal ACs from KAN-8; testing activity then excludes coupon per Q-001)
+- A-002 Confirmed — start at QA login URL
+- A-003 Confirmed — both product paths exist; this activity tests Product Access only
+- A-004 Confirmed — UI-only
+- A-005 N/A — coupon out of scope
+- A-006 Confirmed — use given email; new email if already registered
+
+**UI / navigation updates**
+- Login → `Create Account` control (exact label confirmed)
+- Product Access option on Create Account path
+- Review before Submit Registration
 
 ---
 

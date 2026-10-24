@@ -2,7 +2,7 @@
 
 **Issue**: KAN-10
 **Date**: 2026-10-24
-**Status**: To Do
+**Status**: To Do (grooming — awaiting GROOMING_COMPLETE)
 
 ---
 
@@ -20,61 +20,66 @@ KAN-10 (this Task) has no acceptance criteria of its own in Jira. Acceptance cri
 - **AC6:** Review page displays all entered registration details before submission.
 - **AC7:** Registration details entered by the user are retained and accurately displayed throughout the registration journey.
 
+### Testing scope (human Round 1 — 2026-10-24)
+
+| AC | In this testing activity? |
+|----|---------------------------|
+| AC1 | Yes — Create Account |
+| AC2 | No — coupon out of scope |
+| AC3 | Yes — Product Access workflow |
+| AC4 | No — coupon out of scope |
+| AC5 | No — coupon out of scope |
+| AC6 | Yes — Review shows entered details |
+| AC7 | Yes — details retained across journey |
+
 ### Business Rules
 
-1. Two registration paths: coupon-based **or** product access workflow.
-2. Coupon codes must be validated (accept valid / show error on invalid).
-3. Review happens before final submission and must show entered details.
-4. Entered details must stay accurate across the registration journey.
-5. Formal requirements live on Story KAN-8; KAN-10 supplies QA environment (login URL) and credentials only.
-6. Feature is web UI only — no API contract, OpenAPI, docs/, or specs/ available on branch `main`.
-7. Same QA portal host and test email pattern as prior portal work (KAN-7 / KAN-6); see `testing.md` in this folder.
+1. Product has two registration paths (coupon **or** product access); **this testing activity covers Product Access only**.
+2. Review happens before final submission and must show all entered registration details.
+3. Entered details must stay accurate across the registration journey.
+4. Successful registration is confirmed by a success message or account creation confirmation screen.
+5. Formal requirements live on Story KAN-8; KAN-10 supplies QA environment (login URL) and credentials; Blocks link is intentional for testing.
+6. Feature is web UI only — no API-contract testing.
+7. Test email `shruthi00277@gmail.com` may be used; if already registered, use a new email. Password stays in Jira only.
 
 ### Flows
 
-1. **Entry** — Open Login at `https://webportal.qa.developercommunity.hidcloud.com/login`, then reach Create Account (exact control labels unknown).
-2. **Coupon registration** — On Create Account / coupon path, enter a valid coupon, continue through registration steps, reach Review, submit.
-3. **Product access registration** — On Create Account / product access path, complete the product access workflow, reach Review, submit.
-4. **Invalid coupon** — Enter an invalid coupon; a validation error appears and the journey does not continue as if the code were valid.
-5. **Review before submit** — Before final submission, Review shows all entered registration details; details match what was entered earlier in the journey.
+1. **Entry** — Open Login at `https://webportal.qa.developercommunity.hidcloud.com/login`, click **Create Account**.
+2. **Product access registration** — Create Account → Select Product Access option → Enter required details → Review → Submit Registration → success message or confirmation screen.
+3. **Review before submit** — Review shows all entered registration details; details match earlier steps (AC6/AC7).
+4. **Coupon registration** — Out of scope for KAN-10 testing activity.
 
 ### Field Constraints
 
-- Coupon: only “valid” vs “invalid” is defined (AC4, AC5). No format, length, case, or expiry rules given.
-- Invalid coupon error text: not specified (AC5 says “an appropriate validation error message”).
-- Review field list: not specified (AC6 says “all entered registration details”).
-- Other registration fields (name, email, password, org, etc.): not listed in Jira.
-- Test email on KAN-10: `shruthi00277@gmail.com`. Password stays in Jira only — do not copy into git artifacts.
+- Review: display all entered registration details (exact field list discovered on live QA; assert parity with what was entered).
+- Product Access “required details”: not individually named — discover on live UI during design/execution.
+- Coupon / invalid-coupon copy: not applicable for this activity.
+- Test email: `shruthi00277@gmail.com` (or a new address if already registered).
 
 ### Roles & Permissions
 
 - Single implied actor: developer registering / signing in to the HID Developer Portal.
-- No named product roles (Admin, Manager, etc.) in KAN-10 or KAN-8.
 
 ---
 
 ## Concerns & Decisions
 
-- [#Q-001] Valid QA coupon code(s) for AC2/AC4 are still unknown — OPEN (same gap as `testing.md` Q-001 for KAN-7/KAN-6).
-- [#Q-002] Product access workflow steps, fields, and success criteria for AC3 are undefined — OPEN (same gap as `testing.md` Q-002).
-- [#Q-003] Review field list (AC6) and exact invalid-coupon error text (AC5) are unknown — OPEN (same gap as `testing.md` Q-003).
-- [#Q-004] Login → Create Account navigation and control labels are unknown — OPEN.
-- [#Q-005] Whether `shruthi00277@gmail.com` is an existing login, a registration identity, or both is unclear — OPEN.
-- [#Q-006] “KAN-10 blocks KAN-8” may be intentional as a testing gate (same pattern as KAN-7 blocks KAN-6) — OPEN / nice.
-- [#Q-007] Post-Review success outcome that proves “complete registration” (AC2/AC3) is not defined — OPEN.
-- [#A-001] Decision: treat KAN-8 AC1–AC7 as full formal test scope; KAN-10 is env/credentials wrapper only.
-- [#A-002] Decision: start every case at the QA login URL, then open Create Account.
-- [#A-003] Decision: coupon and product-access paths are alternatives; both can reach Review (AC6/AC7 shared).
-- [#A-004] Decision: UI-only functional coverage; no API-contract testing.
-- [#A-005] Decision: until exact copy is known, “appropriate” invalid-coupon error means a visible validation message that blocks continue.
-- [#A-006] Decision: use given email for login checks; prefer a unique approved address for new registration if the mailbox is already registered.
-- [#D-001] KAN-10 body is login/credentials while KAN-8 ACs are registration — KAN-8 is authoritative for requirements.
-- [#D-002] AC2 (end-to-end coupon registration) overlaps AC4 (mid-flow accept/continue) — test AC4 as mid-step and AC2 as full path unless product says otherwise.
-- [#D-004] Living knowledge open questions (coupon / product access / Review+error) recur on KAN-10/KAN-8 with no answers yet — do not assume KAN-7 answers exist.
-- [#R-001] No valid QA coupon blocks AC2/AC4 happy-path execution (High).
-- [#R-002] Unspecified product access workflow blocks or forces guessing AC3 (High).
-- [#R-003] Soft AC5 assertions may be flaky without exact error copy (Medium).
-- [#R-004] Do not copy the Jira password into git artifacts (Medium).
-- [#R-005] Same QA host/email as KAN-7 risks duplicate-email or shared-coupon collisions (Medium).
-- [#R-006] Unknown post-registration side effects (email verify, entitlements) may leave test data dirty (Medium).
-- [#Conflict note] No contradiction with `testing.md` — same portal, URL, email pattern, and still-open must-questions; this file is the KAN-10/KAN-8 issue capture, `testing.md` remains prior KAN-7/KAN-6 notes.
+- [#Q-001] RESOLVED — Coupon registration out of scope; focus Create Account + Product Access.
+- [#Q-002] RESOLVED — Flow: Create Account → Select Product Access → Enter required details → Review → Submit Registration.
+- [#Q-003] RESOLVED — Review shows all entered details; invalid coupon not tested.
+- [#Q-004] RESOLVED — Login → click `Create Account`.
+- [#Q-005] RESOLVED — Given email usable as test account; new email if already registered.
+- [#Q-006] RESOLVED — KAN-10 blocks KAN-8 is intentional for testing.
+- [#Q-007] RESOLVED — Success = success message or account creation confirmation screen.
+- [#A-001] Confirmed (then narrowed by Q-001 for execution scope).
+- [#A-002] Confirmed.
+- [#A-003] Confirmed (both paths exist; test Product Access only).
+- [#A-004] Confirmed — UI-only.
+- [#A-005] N/A — coupon out of scope.
+- [#A-006] Confirmed.
+- [#R-001] Mitigated — coupon out of scope.
+- [#R-002] Mitigated — workflow defined.
+- [#R-003] Mitigated — AC5 not tested.
+- [#R-004] Accepted — keep password out of git.
+- [#R-005] Mitigated — new email if needed.
+- [#R-007] Accepted — discover remaining labels on QA build.

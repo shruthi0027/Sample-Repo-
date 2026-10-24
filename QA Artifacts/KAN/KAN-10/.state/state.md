@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: awaiting-human
+- **Phase**: grooming-scope-confirmation
 - **Status**: awaiting-human
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T11:48:23Z
+- **Last Updated**: 2026-10-24T11:57:30Z
 
 ## Completed
 
@@ -16,11 +16,12 @@
 | 3 | requirement-grooming | 2026-10-24T11:42:30Z | context/context-KAN-10.md Section 10 (gaps, risks, testability, assumptions, open questions) |
 | 4 | qa-tracker-and-comment | 2026-10-24T11:42:51Z | .state/qa-tracker-KAN-10.md; Jira comment 10108 (Grooming Review Round 1) |
 | 5 | knowledge-capture | 2026-10-24T11:43:30Z | knowledge/KAN/features/hid-developer-portal/task.md |
+| 6 | resume-path-b | 2026-10-24T11:57:30Z | qa-tracker answers RESOLVED; context §10.13/10.15 + UI map updated; knowledge task.md updated; Jira comment 10110 (Grooming Complete scope summary) |
 
 ## Pending
 
-- Await human answers to must items Q-001, Q-002, Q-003 (and optional Q-004–Q-007 / assumptions)
-- On reply: Resume Flow Path A or Path B; when ready for test design, human comments GROOMING_COMPLETE
+- Human confirms scope or comments corrections
+- Human comments **GROOMING_COMPLETE** to proceed with test design
 
 ## History
 
@@ -43,13 +44,15 @@
 - 2026-10-24T11:43:30Z -- knowledge-capture completed → knowledge/KAN/features/hid-developer-portal/task.md
 - 2026-10-24T11:43:44Z -- Status → awaiting-human; stopping for human replies to Q-001–Q-003 (must).
 - 2026-10-24T11:48:23Z -- Resume trigger: content is a re-paste of QA Agent Round 1 comment (no Q-001/Q-002/Q-003 answers, no GROOMING_COMPLETE). No tracker Answer updates. No Jira comment per qa-agent Step 6. Still awaiting-human.
+- 2026-10-24T11:56:13Z -- Resume: human answers in comment 10109 — Q-001–Q-007 and A-001–A-006 resolved. Must items cleared → Path B.
+- 2026-10-24T11:57:30Z -- Path B: scope summary posted (comment 10110). Phase → grooming-scope-confirmation; Status → awaiting-human. Coupon (AC2/AC4/AC5) out of test scope; in-scope AC1/AC3/AC6/AC7 Product Access.
 
 ## Quality Metrics
 
-- **AC Coverage**: 0/7 formal ACs fully testable without clarification (must gaps on AC2–AC6)
+- **AC Coverage**: 4/7 in testing scope (AC1, AC3, AC6, AC7); AC2/AC4/AC5 out of scope per human
 - **Test Cases Generated**: 0
 - **Scenarios per Element (avg)**: —
 - **Publish Success Rate**: —
-- **Coverage Gaps Found**: 10 (G-001–G-010)
-- **Human Intervention Rounds**: 1 (Round 1 posted; re-paste resume with no answers)
+- **Coverage Gaps Found**: 0 must remaining
+- **Human Intervention Rounds**: 2 (Round 1 Q&A + scope confirmation pending)
 - **Delta Updates**: 0
