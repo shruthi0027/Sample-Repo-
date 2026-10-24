@@ -1,5 +1,12 @@
 # Q&A Tracker — #KAN-10
 
+## Meta
+- **Issue**: KAN-10
+- **Requirements Story**: KAN-8
+- **Round**: 1
+- **Status**: awaiting-human
+- **Updated**: 2026-10-24T11:48:23Z
+
 ## Round 1
 
 | ID | Type | Priority | Item | Source | Status | Answer |
@@ -24,3 +31,14 @@
 | R-005 | Risk | Medium | Same QA host/email as KAN-7 — parallel registration may collide | Knowledge: testing.md + Description (KAN-10) | OPEN | — |
 | R-006 | Risk | Medium | Unknown post-registration side effects may leave accounts/mailboxes in bad state | Linked: KAN-8 AC2/AC3 | OPEN | — |
 | R-007 | Risk | Low | Empty docs/specs/Figma → UI label drift in written cases | Context Sections 5–6 | OPEN | — |
+
+## Round History
+
+### Round 1
+- Posted ALM Grooming Review Round 1 (comment 10108)
+- Awaiting human answers to must items Q-001, Q-002, Q-003
+
+### Resume 2026-10-24T11:48:23Z
+- Trigger content was a **re-paste** of QA Agent Round 1 comment (no `Q-00N:` answers, no `GROOMING_COMPLETE`)
+- No tracker Status/Answer changes; must items remain OPEN
+- No Jira follow-up comment (qa-agent Step 6 — re-paste / duplicate)
