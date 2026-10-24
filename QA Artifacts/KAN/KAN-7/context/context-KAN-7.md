@@ -148,14 +148,22 @@ Limited — no Figma, no product docs. Derived only from KAN-6 wording and the l
 
 ---
 
-## 9. Open Questions / Gaps (preliminary)
+## 9. Open Questions / Gaps (grooming)
 
-1. Exact navigation from Login → Create Account (AC1).
-2. Valid coupon code(s) for QA env (AC2/AC4).
-3. Exact invalid-coupon error text (AC5).
-4. Product access workflow steps, fields, and success criteria (AC3).
-5. Review page field inventory (AC6/AC7).
-6. Whether login credentials on KAN-7 are for an existing account or for post-registration sign-in only.
-7. Relationship intent of "KAN-7 blocks KAN-6" (testing gate vs dependency modeling).
+Formal tracker: `.state/qa-tracker-KAN-7.md` (Round 1).
 
-See `.state/qa-tracker-KAN-7.md` after grooming phase for formal Q/A/R IDs.
+### Must-answer before test design
+- **Q-001** — valid coupon code(s) for QA (AC2/AC4)
+- **Q-002** — product access workflow steps/fields/success (AC3)
+- **Q-003** — Review page fields (AC6) + invalid-coupon error text (AC5)
+
+### Should / could
+- **Q-004** — Login → Create Account navigation labels (AC1)
+- **Q-005** — Role of provided test mailbox vs registration
+- **Q-006** — Intent of Blocks link vs parent/child model
+
+### Working assumptions (A-001–A-004)
+KAN-6 is the requirements parent; UI-only scope; two registration paths share Review; entry via the given login host.
+
+### Risks (R-001–R-005)
+Blocked coupon/product-access detail; weak AC5 assertions; credential hygiene; missing product docs.
