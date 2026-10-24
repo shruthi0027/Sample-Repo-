@@ -5,7 +5,7 @@
 - **Phase**: context-gathering
 - **Status**: failed
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T11:06:30Z
+- **Last Updated**: 2026-10-24T11:07:30Z
 
 ## Completed
 
@@ -27,6 +27,9 @@
 - 2026-10-24T11:05:00Z -- Direct REST to https://busybug027.atlassian.net: /myself → 401 AUTHENTICATED_FAILED; project search → 0 projects; KAN-7 also inaccessible (token invalid or site/project wiped)
 - 2026-10-24T11:06:00Z -- jira_add_comment on KAN-10 failed (issue does not exist or no permission) — error comment could not be posted
 - 2026-10-24T11:06:30Z -- Status → failed; stopping per qa-agent protocol (cannot gather context without issue access)
+- 2026-10-24T11:07:00Z -- Follow-up received: human response is "start QA grooming" (no Q-IDs / no GROOMING_COMPLETE). No qa-tracker exists; context/ empty. Resume Flow N/A — treat as restart of Phase 1.
+- 2026-10-24T11:07:15Z -- Retry jira_get_issue(KAN-10) + REST /myself: still 401 AUTHENTICATED_FAILED / issue not found. Search returns empty.
+- 2026-10-24T11:07:30Z -- Still blocked; Status remains failed. No Jira comment (cannot access issue; no new workflow output vs prior failure).
 
 ## Quality Metrics
 
