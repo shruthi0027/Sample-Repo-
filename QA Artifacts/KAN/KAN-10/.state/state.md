@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: publish
-- **Status**: in-progress
+- **Phase**: idle
+- **Status**: completed
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T12:36:00Z
+- **Last Updated**: 2026-10-24T12:38:30Z
 
 ## Completed
 
@@ -21,13 +21,15 @@
 | 8 | web-test-design | 2026-10-24T12:07:00Z | functional/test-plan, scenarios, test-cases md+csv, coverage-KAN-10.md |
 | 9 | test-case-intake | 2026-10-24T12:28:21Z | execution/credential-requirements-KAN-10.md (signals); jira-testcase-resolution-KAN-10.md |
 | 10 | credential-analysis | 2026-10-24T12:30:00Z | credential-requirements-KAN-10.md (live+status); execution-credential-tracker-KAN-10.md |
-| 11 | execution-manifest | 2026-10-24T12:32:00Z | functional/execution/execution-manifest-KAN-10.md (11 Smoke TCs, all Pending) |
-| 12 | agent-browser-execution | 2026-10-24T12:34:46Z | functional/execution/execution-results-KAN-10.json (0 Pass / 0 Fail / 11 Blocked) |
-| 13 | test-result-report | 2026-10-24T12:36:00Z | functional/execution/test-result-KAN-10.md, test-result-KAN-10.html |
+| 11 | execution-manifest | 2026-10-24T12:33:00Z | execution-manifest-KAN-10.md (11 Smoke TCs) |
+| 12 | agent-browser-execution | 2026-10-24T12:35:00Z | execution-results-KAN-10.json (0 Pass / 0 Fail / 11 Blocked) |
+| 13 | test-result-report | 2026-10-24T12:37:00Z | test-result-KAN-10.md, test-result-KAN-10.html |
+| 14 | publish | 2026-10-24T12:38:30Z | Jira attachments + label QA-Agent; results comment 10116 |
+| 15 | status-comment | 2026-10-24T12:38:30Z | skipped — detailed results already in comment 10116 |
 
 ## Pending
 
-- web-test-execution: publish → status-comment
+- None (web-test-execution complete). Re-run when QA portal is reachable from agent network.
 
 ## History
 
@@ -36,17 +38,19 @@
 - 2026-10-24T12:25:39Z -- Human "Start web test execution". Starting web-test-execution workflow. Local TCs present (38 cases). No prior execution artifacts.
 - 2026-10-24T12:28:21Z -- test-case-intake done: 38 TCs scanned; URL/role/email signals written; no ALM issue-key resolution needed.
 - 2026-10-24T12:30:00Z -- credential-analysis: CR-001/002/003 PROVIDED; CR-004 OPTIONAL. No Jira credential request. Live Login URL unreachable (ERR_CONNECTION_REFUSED / private 10.8.x.x). Hard gate clear — may proceed to manifest.
-- 2026-10-24T12:32:00Z -- execution-manifest: Smoke scope (default); 11 TCs Pending; 0 Blocked. Phase → agent-browser-execution.
-- 2026-10-24T12:34:46Z -- agent-browser-execution: one open of QA Login URL failed with net::ERR_CONNECTION_REFUSED; all 11 Smoke TCs Blocked (host unreachable). Browser closed. Phase → test-result-report.
-- 2026-10-24T12:36:00Z -- test-result-report: wrote test-result-KAN-10.md + test-result-KAN-10.html (0 Pass / 0 Fail / 11 Blocked; Verdict Partial). Phase → publish.
+- 2026-10-24T12:33:00Z -- execution-manifest: 11 Smoke TCs Pending.
+- 2026-10-24T12:35:00Z -- agent-browser-execution: open Login failed ERR_CONNECTION_REFUSED; all 11 Smoke TCs Blocked.
+- 2026-10-24T12:37:00Z -- test-result-report: MD + HTML written.
+- 2026-10-24T12:38:30Z -- publish: attached test-result-KAN-10.md/.html; label QA-Agent; posted comment 10116. Workflow complete (idle).
 
 ## Quality Metrics
 
 - **AC Coverage**: 4/7 in testing scope (AC1, AC3, AC6, AC7); AC2/AC4/AC5 out of scope
 - **Test Cases Generated**: 38
-- **Test Cases Executed (Smoke)**: 11 (0 Pass / 0 Fail / 11 Blocked)
+- **Smoke Executed**: 11 (0 Pass / 0 Fail / 11 Blocked)
+- **Pass Rate**: 0%
 - **Scenarios per Element (avg)**: —
-- **Publish Success Rate**: —
+- **Publish Success Rate**: 2/2 attachments + 1 results comment
 - **Coverage Gaps Found**: 0 must remaining
 - **Human Intervention Rounds**: 2
 - **Delta Updates**: 0
