@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: credential-analysis-complete
+- **Phase**: agent-browser-execution
 - **Status**: in-progress
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T12:30:00Z
+- **Last Updated**: 2026-10-24T12:32:00Z
 
 ## Completed
 
@@ -21,10 +21,11 @@
 | 8 | web-test-design | 2026-10-24T12:07:00Z | functional/test-plan, scenarios, test-cases md+csv, coverage-KAN-10.md |
 | 9 | test-case-intake | 2026-10-24T12:28:21Z | execution/credential-requirements-KAN-10.md (signals); jira-testcase-resolution-KAN-10.md |
 | 10 | credential-analysis | 2026-10-24T12:30:00Z | credential-requirements-KAN-10.md (live+status); execution-credential-tracker-KAN-10.md |
+| 11 | execution-manifest | 2026-10-24T12:32:00Z | functional/execution/execution-manifest-KAN-10.md (11 Smoke TCs, all Pending) |
 
 ## Pending
 
-- web-test-execution: execution-manifest → agent-browser-execution → test-result-report → publish → status-comment
+- web-test-execution: agent-browser-execution → test-result-report → publish → status-comment
 
 ## History
 
@@ -33,6 +34,7 @@
 - 2026-10-24T12:25:39Z -- Human "Start web test execution". Starting web-test-execution workflow. Local TCs present (38 cases). No prior execution artifacts.
 - 2026-10-24T12:28:21Z -- test-case-intake done: 38 TCs scanned; URL/role/email signals written; no ALM issue-key resolution needed.
 - 2026-10-24T12:30:00Z -- credential-analysis: CR-001/002/003 PROVIDED; CR-004 OPTIONAL. No Jira credential request. Live Login URL unreachable (ERR_CONNECTION_REFUSED / private 10.8.x.x). Hard gate clear — may proceed to manifest.
+- 2026-10-24T12:32:00Z -- execution-manifest: Smoke scope (default); 11 TCs Pending; 0 Blocked. Phase → agent-browser-execution.
 
 ## Quality Metrics
 
