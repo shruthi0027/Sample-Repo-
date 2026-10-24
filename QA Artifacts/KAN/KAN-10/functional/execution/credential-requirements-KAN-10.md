@@ -1,55 +1,53 @@
 # Credential Requirements — KAN-10
 
 **Prerequisite**: Resolve or skip before test-case browser execution.  
-**Scope of this Step 0 write**: test case signals section only (no live auth discovery yet).
+**Last updated**: 2026-10-24T12:30:00Z (Step 1 — live discovery + status merge)
 
-## Test case signals
+## Auth surfaces discovered (live)
 
-Scanned sources: `functional/test-cases-KAN-10.csv` (all 261 rows / 38 TCs) and companion `functional/test-cases-KAN-10.md`. No additional steps were fetched from Jira issue keys (local `TC-*` IDs only).
+| Surface | URL | Methods visible |
+|---------|-----|-----------------|
+| Login (attempted) | `https://webportal.qa.developercommunity.hidcloud.com/login` | **Unreachable** — `net::ERR_CONNECTION_REFUSED` (DNS resolves to private `10.8.72.41` / `10.8.72.27`; curl connect timeout). No login form, SSO, OAuth, OTP, or magic-link controls could be cataloged. |
+| Expected from TC/context (not live-confirmed) | Same Login URL | Login page with `Create Account` control; sign-in controls implied by page name and Jira credentials note. No OAuth/SSO/OTP/captcha signals in TCs. |
 
-### URLs
+Browser closed after discovery attempts. No passwords or session tokens stored.
 
-| URL | Where seen | Signal |
-|-----|------------|--------|
-| `https://webportal.qa.developercommunity.hidcloud.com/login` | Every TC Action step 1 (and titles/preconditions referencing QA Login) | **Base URL / Login URL** — primary app entry |
+## Test case signals (from Step 0)
 
-No other `http(s)` URLs appear in Action, Expected Result, Preconditions, or Tags.
+Scanned sources: `functional/test-cases-KAN-10.csv` (261 rows / 38 TCs) and `functional/test-cases-KAN-10.md`.
 
-### Roles
+| Signal | Detail |
+|--------|--------|
+| URLs | Only `https://webportal.qa.developercommunity.hidcloud.com/login` |
+| Role | Developer (unauthenticated start) |
+| Path | Open Login → click `Create Account` → Product Access registration (no password-login steps in CSV) |
+| Registration email | `shruthi00277@gmail.com`; alternate unused email if already registered |
+| OAuth / SSO / OTP / invitation / captcha | None in CSV/MD |
 
-| Role | Signal |
-|------|--------|
-| **Developer** | Primary actor in titles, preconditions (“The Developer is not signed in”), and steps across TC-001–TC-038 |
+## Resolution sources checked
 
-No Admin, Owner, Manager, or other named roles appear in the scanned rows.
+| Source | Result |
+|--------|--------|
+| `QA Artifacts/credentials/credentials.json` | **Absent** (credentials folder does not exist) |
+| Env `WEB_APP_BASE_URL` / `QA_TEST_EMAIL` / `QA_TEST_PASSWORD` | All unset |
+| Context Section 7 | Login URL + email `shruthi00277@gmail.com`; password exists only in Jira description (not copied here) |
+| Human reply / SKIP | None for execution credentials yet |
 
-### Login / session signals
+## CR-* requirements (deduplicated)
 
-| Signal | Detail | TCs |
-|--------|--------|-----|
-| Unauthenticated start | Preconditions: Developer is **not signed in** | All 38 TCs |
-| Login page as entry | Open Login URL, then click `Create Account` (registration path — not “log in with password” steps) | All 38 TCs |
-| Existing-account login steps | No CSV/MD steps that type username/password into Login to authenticate | None in attachment |
-| Registration email | Use `shruthi00277@gmail.com` when an email field is required; if already registered, use a new unused email | TC-008, TC-013, TC-014, TC-016–TC-021, TC-023–TC-034, TC-036–TC-038 |
-| Alternate registration email | `hid.qa.product.access.001@example.com` when primary mailbox is already registered | TC-021 (and related already-registered flows) |
+| ID | Type | Detail | Source | Live match | Status |
+|----|------|--------|--------|------------|--------|
+| CR-001 | Base URL | `https://webportal.qa.developercommunity.hidcloud.com/login` | All TC open-URL steps + Context Section 7 | Host unresolved from agent network (connection refused) — URL value known | **PROVIDED** |
+| CR-002 | Registration test email | `shruthi00277@gmail.com` (use a new unused email if already registered; alternate example `hid.qa.product.access.001@example.com`) | TC-008+ preconditions + Context Section 7 + grooming Q-005 | N/A (form not reachable) | **PROVIDED** |
+| CR-003 | Isolated / signed-out session | Fresh unauthenticated browser session (Developer not signed in) | All TC preconditions | agent-browser fresh session available | **PROVIDED** |
+| CR-004 | Login (default) email + password | Existing-account sign-in — **not used** by Create Account / Product Access TC steps | Context Section 7 credentials note; Jira description only for password | Live form not visible (host unreachable) | **OPTIONAL** (MISSING value in env/shared file — not required for scoped TCs; do not ask) |
 
-### OAuth / SSO / OTP / invitation / captcha
+> Do not store password values in this file.
 
-| Signal type | Found in CSV/MD? |
-|-------------|------------------|
-| OAuth (Google / Apple / social) | **No** |
-| SSO / SAML / IdP | **No** |
-| OTP / verification code / inbox access | **No** |
-| Invitation / temporary password | **No** |
-| Captcha | **No** |
-| Password field in test steps | **No** (no `password` text in CSV/MD steps) |
+## Gate decision
 
-### Implied CR-* candidates (names only — from test case signals)
-
-| ID | Type | Detail | Source |
-|----|------|--------|--------|
-| CR-001 | Base URL | `https://webportal.qa.developercommunity.hidcloud.com/login` | All TC open-URL steps |
-| CR-002 | Registration test email | Named mailbox for Product Access email field; alternate unused email if already registered | TC-008+ registration flows |
-| CR-003 | Isolated / signed-out session | Fresh unauthenticated browser session (Developer not signed in) | All TC preconditions |
-
-> Do not store password values in this file. Live auth discovery and Status (`PROVIDED` / `MISSING` / …) are filled in a later credential-analysis step.
+| Check | Result |
+|-------|--------|
+| Required CR-* all PROVIDED or SKIPPED? | **Yes** — CR-001, CR-002, CR-003 are PROVIDED; CR-004 is OPTIONAL |
+| Credential request comment needed? | **No** — no required CR-* is MISSING |
+| Proceed to execution manifest? | **Yes** (hard gate clear). Live host reachability remains a runtime risk — TCs may Block if the portal stays unreachable from the agent network. |
