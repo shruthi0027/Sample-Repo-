@@ -2,10 +2,10 @@
 
 ## Current
 
-- **Phase**: agent-browser-execution
+- **Phase**: test-result-report
 - **Status**: in-progress
 - **Git Branch**: main
-- **Last Updated**: 2026-10-24T12:32:00Z
+- **Last Updated**: 2026-10-24T12:34:46Z
 
 ## Completed
 
@@ -22,10 +22,11 @@
 | 9 | test-case-intake | 2026-10-24T12:28:21Z | execution/credential-requirements-KAN-10.md (signals); jira-testcase-resolution-KAN-10.md |
 | 10 | credential-analysis | 2026-10-24T12:30:00Z | credential-requirements-KAN-10.md (live+status); execution-credential-tracker-KAN-10.md |
 | 11 | execution-manifest | 2026-10-24T12:32:00Z | functional/execution/execution-manifest-KAN-10.md (11 Smoke TCs, all Pending) |
+| 12 | agent-browser-execution | 2026-10-24T12:34:46Z | functional/execution/execution-results-KAN-10.json (0 Pass / 0 Fail / 11 Blocked) |
 
 ## Pending
 
-- web-test-execution: agent-browser-execution → test-result-report → publish → status-comment
+- web-test-execution: test-result-report → publish → status-comment
 
 ## History
 
@@ -35,11 +36,13 @@
 - 2026-10-24T12:28:21Z -- test-case-intake done: 38 TCs scanned; URL/role/email signals written; no ALM issue-key resolution needed.
 - 2026-10-24T12:30:00Z -- credential-analysis: CR-001/002/003 PROVIDED; CR-004 OPTIONAL. No Jira credential request. Live Login URL unreachable (ERR_CONNECTION_REFUSED / private 10.8.x.x). Hard gate clear — may proceed to manifest.
 - 2026-10-24T12:32:00Z -- execution-manifest: Smoke scope (default); 11 TCs Pending; 0 Blocked. Phase → agent-browser-execution.
+- 2026-10-24T12:34:46Z -- agent-browser-execution: one open of QA Login URL failed with net::ERR_CONNECTION_REFUSED; all 11 Smoke TCs Blocked (host unreachable). Browser closed. Phase → test-result-report.
 
 ## Quality Metrics
 
 - **AC Coverage**: 4/7 in testing scope (AC1, AC3, AC6, AC7); AC2/AC4/AC5 out of scope
 - **Test Cases Generated**: 38
+- **Test Cases Executed (Smoke)**: 11 (0 Pass / 0 Fail / 11 Blocked)
 - **Scenarios per Element (avg)**: —
 - **Publish Success Rate**: —
 - **Coverage Gaps Found**: 0 must remaining
